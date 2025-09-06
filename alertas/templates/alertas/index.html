@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alerta Segura</title>
+<link rel="stylesheet" href="{% static 'alertas/style.css' %}">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🚨 Alerta Segura</div>
+    <nav>
+      <a href="#formulario">Registrar</a>
+      <a href="#info">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+      <button id="btnHistorial" class="btn-alertas">
+        📑 Ver historial de alertas
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Reporta emergencias en segundos</h1>
+      <p>Con Alerta Segura tu reporte llega directo a los equipos de respuesta para una atención rápida y efectiva.</p>
+      <a href="#formulario" class="btn-hero">Registrar alerta</a>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section id="formulario" class="form-section">
+    <div class="form-card">
+      <h2>Registrar nueva alerta</h2>
+      <form id="alertForm">
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required maxlength="80" />
+        </div>
+        <div class="field">
+          <label for="accidente">Accidente</label>
+          <input type="text" id="accidente" placeholder="Ej: Choque múltiple" required maxlength="80" />
+        </div>
+        <div class="field">
+          <label for="lugar">Lugar</label>
+          <input type="text" id="lugar" placeholder="Ej: Av. Arequipa 1234, Lima" required maxlength="120" />
+        </div>
+        <div class="field">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" rows="4" maxlength="300" placeholder="Detalles relevantes..."></textarea>
+          <small id="descCount">0/300</small>
+        </div>
+        <button type="submit" class="btn-primary">Enviar alerta</button>
+      </form>
+    </div>
+
+    <!-- Animación -->
+    <div class="animation" id="animation" aria-hidden="true">
+      <div class="road">
+        <div class="ambulance">
+          <div class="light red"></div>
+          <div class="light blue"></div>
+          🚑
+        </div>
+      </div>
+      <div class="message">🚑 La ambulancia está en camino...</div>
+      <div class="timer" id="timer"></div>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section id="info" class="info-section">
+    <h2>Cómo funciona</h2>
+    <p>Tu reporte se registra en la plataforma y de inmediato se notifica a las autoridades locales. La ambulancia recibe tu ubicación y se moviliza al instante.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto" class="footer">
+    <p>© 2025 Alerta Segura - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Modal Historial -->
+  <div id="modalHistorial" class="modal">
+    <div class="modal-content">
+      <span id="closeHistorial" class="close">&times;</span>
+      <h2>📑 Historial de alertas</h2>
+      <ul id="historialList"></ul>
+    </div>
+  </div>
+
+   <script src="{% static 'alertas/script.js' %}"></script>
+</body>
+</html>
