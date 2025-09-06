@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: segurity-alert
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Segurity_Alert.wsgi
+    plan: free
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: Segurity_Alert.settings
+      - key: PYTHON_VERSION
+        value: 3.11
